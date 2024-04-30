@@ -1,0 +1,34 @@
+
+-> quiz (TABLE):
+    - title (
+        TEXT UNIQUE NOT NULL 
+    ) => Error : UNIQUE(sqlite3.IntegrityError)
+    - category (
+        TEXT NOT NULL
+    ) 
+    - slogan (
+        TEXT NOT NULL
+    ) 
+    - image_url (
+        TEXT NOT NULL
+    )
+
+
+-> quiz_data (TABLE):
+    - quiz_obj(
+        TEXT NOT NULL
+    )
+    - lang (
+        TEXT NOT NULL
+    ) 
+    - quest_debutant (
+        TEXT NOT NULL
+    ) 
+    - quest_confirme (
+        TEXT NOT NULL
+    ) 
+    - quest_expert (
+        TEXT NOT NULL
+    )
+    FOREIGN KEY (quiz_obj) REFERENCES quiz(title) ON DELETE CASCADE ON UPDATE CASCADE
+
