@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { countNumber, getQuizData, writeText } from "../utils";
 import "./detail.css";
 import { urlTitleParamStr } from "../quiz_page_component/Quiz";
-
+import failureSong from "./assets/failure.mp3";
+import successSong from "./assets/success.mp3";
+import endGameSong from "./assets/endGame.mp3";
 
 export const levelRefer = {
     Beginner : "débutant",
@@ -134,6 +136,9 @@ export function AfterQuiz({title, level, score, lacked, totalStep}){
     const goodResponseRef = useRef(null);
     const badResponseRef = useRef(null);
     const challengMesageRef = useRef(null);
+    const [showHomeBtn, setShowHomeBtn] = useState(false);
+    const endGameSongRef = useRef(null);
+    endGameSongRef.current = new Audio(endGameSong);
     const percent = parseInt((score * 100) / totalStep);
     const challengingMess = [
         "Can you beat your own record and claim victory once again? Prove it!",
@@ -148,10 +153,14 @@ export function AfterQuiz({title, level, score, lacked, totalStep}){
     );
 
     useEffect(()=>{
+        endGameSongRef.current.play()
         countNumber(percent, percentRef, 50);
         goodResponseRef.current.classList.add("scale-anima-slow");
         badResponseRef.current.classList.add("scale-anima-slow");
-        writeText(challengMesageRef, 50)
+        writeText(challengMesageRef, 100)
+        setTimeout(() => {
+            setShowHomeBtn(true);
+        }, chMessage.length * 100);
     }, [percent]);
 
     return(
@@ -196,11 +205,16 @@ export function AfterQuiz({title, level, score, lacked, totalStep}){
                         </p>
 
                         <div className="text-end mt-5">
-                            <Link to={`/quiz?${urlTitleParamStr}=${title}`}
+                            {showHomeBtn && <a href=""
                             className="text-decoration-none 
-                            btn-primary btn border-radius-lg">
+                            btn-primary btn border-radius-lg"
+                            onClick={(e)=>{
+                                e.preventDefault();
+                                endGameSongRef.current.pause();
+                                useNavigate()(`/quiz?${urlTitleParamStr}=${title}`);
+                            }}>
                                 Okay, Quiz page
-                            </Link>
+                            </a>}
                         </div>
                     </div>
 
@@ -229,6 +243,10 @@ export default function QuizDetail(){
     const question = quizData[currentStep].question;
     const rightResponse = quizData[currentStep]["réponse"];
     const anecdoct = quizData[currentStep].anecdote;
+    const AudioSuccessRef = useRef(null)
+    AudioSuccessRef.current = new Audio(successSong)
+    const AudioFailureRef = useRef(null)
+    AudioFailureRef.current = new Audio(failureSong)
 
     /*  Tell if the quiz is at the ending */ 
     const [isEnding, setIsEnding] = useState(false);
@@ -245,10 +263,12 @@ export default function QuizDetail(){
     function onValidationBtnClick(){ 
         if(!((score.current + lacked.current) >= totalStep)){
             if(currentChoiceValue === rightResponse){
+                AudioSuccessRef.current.play()
                 score.current += 1;
                 scoreBarRef.current.style.width = `${scoreCurrentPercent.current + fillPercent}%`;
                 scoreCurrentPercent.current += fillPercent;
             }else{
+                AudioFailureRef.current.play()
                 lacked.current += 1
             }
         }
