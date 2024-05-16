@@ -132,6 +132,7 @@ export function ShowLevel({levelName}){
 
 
 export function AfterQuiz({title, level, score, lacked, totalStep}){
+    const navigate = useNavigate()
     const percentRef = useRef(null);
     const goodResponseRef = useRef(null);
     const badResponseRef = useRef(null);
@@ -211,7 +212,7 @@ export function AfterQuiz({title, level, score, lacked, totalStep}){
                             onClick={(e)=>{
                                 e.preventDefault();
                                 endGameSongRef.current.pause();
-                                useNavigate()(`/quiz?${urlTitleParamStr}=${title}`);
+                                navigate(`/quiz?${urlTitleParamStr}=${title}`);
                             }}>
                                 Okay, Quiz page
                             </a>}
