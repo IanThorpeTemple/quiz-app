@@ -6,7 +6,7 @@ services:
       context: back-end
       dockerfile: ./docker/dev.Dockerfile
     ports:
-      - 5000:5000
+      - 8000:8000
     container_name: "quiz_app_backend"
   react:
     build:
