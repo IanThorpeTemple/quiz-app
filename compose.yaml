@@ -17,3 +17,12 @@ services:
     depends_on:
       - flask
     container_name: "quiz_app_frontend"
+    develop:
+      watch:
+        - action : sync
+          path: ./front-end
+          target: .
+          ignore:
+            - "node_modules"
+        - action: rebuild
+          path: ./front-end/package.json
