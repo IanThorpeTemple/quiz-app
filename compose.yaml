@@ -21,7 +21,7 @@ services:
       watch:
         - action : sync
           path: ./front-end
-          target: .
+          target: /code
           ignore:
             - "node_modules"
         - action: rebuild
