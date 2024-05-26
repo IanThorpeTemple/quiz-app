@@ -6,8 +6,10 @@ services:
       context: back-end
       dockerfile: ./docker/dev.Dockerfile
     ports:
-      - 8000:8000
+      - 5000:5000
     container_name: "quiz_app_backend"
+    networks:
+      - backend    
   react:
     build:
       context: front-end
@@ -17,3 +19,8 @@ services:
     depends_on:
       - flask
     container_name: "quiz_app_frontend"
+    networks:
+      - backend
+
+networks:
+  backend: {}
