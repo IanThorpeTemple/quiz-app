@@ -20,9 +20,7 @@ services:
     develop:
       watch:
         - action : sync
-          path: ./front-end
-          target: /code
-          ignore:
-            - "node_modules"
+          path: front-end/src
+          target: /code/src
         - action: rebuild
-          path: ./front-end/package.json
+          path: front-end/package.json
