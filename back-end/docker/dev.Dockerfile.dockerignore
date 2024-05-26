@@ -1,0 +1,6 @@
+__pycache__
+.pytest_cache
+app/__pycache__
+app_tests/__pycache__
+docker
+venv

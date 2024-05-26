@@ -1,0 +1,19 @@
+name: "quiz_app"
+
+services:
+  flask:
+    build:
+      context: /back-end/
+      dockerfile: /back-end/docker/dev.Dockerfile
+    ports:
+      - 5000:5000
+    container_name: "quiz_app_backend"
+  react:
+    build:
+      context: /front-end/
+      dockerfile: /front-end/docker/dev.Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - flask
+    container_name: "quiz_app_frontend"
