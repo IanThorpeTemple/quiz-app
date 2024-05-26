@@ -1,5 +1,5 @@
 
-export const baseUrl = "http://quiz_app_backend:5000/api"
+export const baseUrl = "http://localhost:5000/api"
 
 // (
 //     window.location.host.includes("localhost") ?
