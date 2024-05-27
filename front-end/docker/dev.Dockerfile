@@ -1,6 +1,6 @@
 FROM node:22-alpine
 
-RUN useradd -ms /bin/sh app
+RUN addgroup app && adduser -G app -D app
 
 USER app
 
