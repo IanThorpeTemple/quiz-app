@@ -35,19 +35,6 @@ In a terminal :
 ```bash
   cd back-end
 ```
-- Create a virtual environment:
-```bash
-  python -m venv venv
-```
-- Activate the virtual environment:
-1. On windows
-```bash
-  .\venv\Scripts\activate
-```
-2. On macOS/Linux:
-```bash
-  source venv/bin/activate/
-```
 - Install the required packages:
 ```bash
   pip install -r requirements.txt
