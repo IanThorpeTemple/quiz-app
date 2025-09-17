@@ -1,9 +1,5 @@
 # Quiz App
 
-
-**Live version:** [click here](quiz-app-lake-gamma.vercel.app)
-
-
 ## Technologies
 - **Frontend**: React, Bootstrap
 - **Backend**: Python, Flask, Sqlite
@@ -13,17 +9,13 @@
 
 
 #### Clone the repo
-First of all you need [Git](https://git-scm.com/downloads) on your system to be able to clone 
-the repository.
 
 The following instructions assume that [Git](https://git-scm.com/downloads)\
 is installed:
 
-- Open your terminal
-- navigate to the folder where you want to clone the repository
 - clone the repository to your local machine by running:
 ```bash
-git clone https://github.com/Romulad/quiz-app.git
+git clone https://github.com/IanThorpeTemple/quiz-app/
 ```
 - then navigate to the newly created directory to follow the next instructions:
 ```bash
