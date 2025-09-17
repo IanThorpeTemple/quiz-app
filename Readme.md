@@ -1,13 +1,6 @@
 # Quiz App
 
 
-## You can:
-- Browse and choose a quiz
-- Filter quiz by categories
-- Select quiz based on difficulty level and language
-- Play quiz and see progress
-
-
 **Live version:** [click here](quiz-app-lake-gamma.vercel.app)
 
 
