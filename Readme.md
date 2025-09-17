@@ -69,6 +69,5 @@ This project was developed and tested on:
 
 - **Operating System:** Windows 11, 64-bit
 - **Python:** 3.11.0
-- **Node.js:** 20.5.1 (includes npm)
-- **npm:** 10.1.0
+- **Node.js:** 22.15.0
 
