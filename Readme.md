@@ -62,3 +62,6 @@ In a new terminal :
 ```
   
 And you're done! Visit `localhost:3000` to view the app.
+
+<img width="1239" height="631" alt="image" src="https://github.com/user-attachments/assets/f3be6388-fd06-43bc-a019-74728bd2ec63" />
+
